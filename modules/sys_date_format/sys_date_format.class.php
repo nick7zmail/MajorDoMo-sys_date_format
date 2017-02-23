@@ -195,7 +195,7 @@ function usual(&$out) {
 					case '11':$mn='Ноября';break;
 					case '12':$mn='Декабря';break;
 				}
-				$result=date( "d", time())." ".$mn." ".date( "Y", time())
+				$result=date( "d", time())." ".$mn." ".date( "Y", time());
 			} elseif ($all_vals[$i]['FORMAT']=="n1") {
 				switch (date("N", time())) {
 					case 1:$result='Понедельник';break;
@@ -204,7 +204,7 @@ function usual(&$out) {
 					case 4:$result='Четверг';break;
 					case 5:$result='Пятница';break;
 					case 6:$result='Суббота';break;
-					case 7:$result='Воскресенье');break;
+					case 7:$result='Воскресенье';break;
 				}
 			} elseif ($all_vals[$i]['FORMAT']=="n2") {
 				switch (date("N", time())) {
@@ -214,7 +214,7 @@ function usual(&$out) {
 					case 4:$result='Чт';break;
 					case 5:$result='Пт';break;
 					case 6:$result='Сб';break;
-					case 7:$result='Вс');break;
+					case 7:$result='Вс';break;
 				}
 			} else {
 				$result=date($all_vals[$i]['FORMAT'],time());
