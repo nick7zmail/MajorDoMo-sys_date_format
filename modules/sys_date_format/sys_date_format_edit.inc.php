@@ -7,6 +7,7 @@
   }
   $table_name='sys_date_format';
   $rec=SQLSelectOne("SELECT * FROM $table_name WHERE ID='$id'");
+  $out['format']=$rec['FORMAT'];
   if ($this->mode=='update') {
    $ok=1;
 
