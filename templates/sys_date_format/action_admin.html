@@ -1,0 +1,17 @@
+
+ <!-- action usual -->
+ <!-- table sys_date_format search -->
+ [#if VIEW_MODE="search_sys_date_format" || VIEW_MODE=""#]
+  [#inc sys_date_format_search_admin.html#]
+ [#endif VIEW_MODE#]
+ <!-- / table sys_date_format search -->
+ <!-- table sys_date_format edit -->
+ [#if VIEW_MODE="edit_sys_date_format"#]
+   [#inc sys_date_format_edit.html#]
+ [#endif VIEW_MODE#]
+ <!-- / table sys_date_format edit -->
+ <!-- table sys_date_format view --> 
+ [#if VIEW_MODE="view_sys_date_format"#]
+   [#inc sys_date_format_view.html#]
+ [#endif VIEW_MODE#]
+ <!-- / table sys_date_format view -->
