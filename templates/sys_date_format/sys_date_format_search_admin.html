@@ -33,12 +33,25 @@
    [#TITLE#]
   </a></b>
  </td>
- <td style="vertical-align:middle"
-   >
+ <!--td style="vertical-align:middle">
   [#if FORMAT!=""#]
    [#FORMAT#]
   [#else#]
    &nbsp;
+  [#endif#]
+ </td-->
+ <td style="vertical-align:middle">
+  [#if LINKED_OBJECT!="" && LINKED_PROPERTY!=""#]
+   [#LINKED_OBJECT#].[#LINKED_PROPERTY#]
+  [#else#]
+	<div class="alert alert-error"><#LANG_NO_OBJECTS_DEFINED#></div>
+  [#endif#]
+ </td>
+ <td style="vertical-align:middle">
+  [#if VALUE!=""#]
+   [#VALUE#]
+  [#else#]
+	<div class="alert alert-error">значение пока не обновлено</div>
   [#endif#]
  </td>
  <td style="vertical-align:middle" width="1%" nowrap>

@@ -24,7 +24,7 @@
    //paging($res, 100, $out); // search result paging
    $total=count($res);
    for($i=0;$i<$total;$i++) {
-    // some action for every record if required
+	   $res[$i]['VALUE']=gg($res[$i]['LINKED_OBJECT'].'.'.$res[$i]['LINKED_PROPERTY']);
    }
    $out['RESULT']=$res;
   }

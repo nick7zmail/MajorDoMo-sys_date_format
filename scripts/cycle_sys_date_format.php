@@ -51,7 +51,7 @@ while (1)
 	   if ($h != $old_hour)
 	   {
 			$sys_date_format_module->processCycle_hour();
-			$old_hour = $h
+			$old_hour = $h;
 	   }
 
 	   if (file_exists('./reboot') || IsSet($_GET['onetime']))

@@ -18,7 +18,7 @@ class sys_date_format extends module {
 */
 function sys_date_format() {
   $this->name="sys_date_format";
-  $this->title="<#LANG_DATE_FORMAT#>";
+  $this->title="Формат даты";
   $this->module_category="<#LANG_SECTION_SYSTEM#>";
   $this->checkInstalled();
 }
