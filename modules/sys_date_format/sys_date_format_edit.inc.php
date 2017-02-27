@@ -35,6 +35,7 @@
      $rec['ID']=SQLInsert($table_name, $rec); // adding new record
     }
     $out['OK']=1;
+	$out['format']=$rec['FORMAT'];
    } else {
     $out['ERR']=1;
    }

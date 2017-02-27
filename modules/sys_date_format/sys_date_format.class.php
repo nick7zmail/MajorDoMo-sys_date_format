@@ -18,7 +18,7 @@ class sys_date_format extends module {
 */
 function sys_date_format() {
   $this->name="sys_date_format";
-  $this->title="Date format";
+  $this->title="<#LANG_DATE_FORMAT#>";
   $this->module_category="<#LANG_SECTION_SYSTEM#>";
   $this->checkInstalled();
 }
@@ -174,52 +174,99 @@ function usual(&$out) {
     }
    }
  }
- function processCycle() {
+ 
+ function processCycle_sec() {
 	 $table='sys_date_format';
 	 $all_vals=SQLSelect("SELECT * FROM $table");
 	 $total=count($all_vals);
+
+	 if ($total) {
+		for($i=0;$i<$total;$i++) {
+			if ($all_vals[$i]['FORMAT']=="s"||$all_vals[$i]['FORMAT']=="H:i:s") {
+				$result=date($all_vals[$i]['FORMAT'],time());
+				sg($all_vals[$i]['LINKED_OBJECT'].'.'.$all_vals[$i]['LINKED_PROPERTY'], $result);
+			}
+		}		 
+	 }
+ }
+ function processCycle_min() {
+	 $table='sys_date_format';
+	 $all_vals=SQLSelect("SELECT * FROM $table");
+	 $total=count($all_vals);
+
+	 if ($total) {
+		for($i=0;$i<$total;$i++) {
+			if ($all_vals[$i]['FORMAT']=="H"||$all_vals[$i]['FORMAT']=="i"||$all_vals[$i]['FORMAT']=="H:i") {
+				$result=date($all_vals[$i]['FORMAT'],time());
+				sg($all_vals[$i]['LINKED_OBJECT'].'.'.$all_vals[$i]['LINKED_PROPERTY'], $result);
+			}
+		}		 
+	 }
+ }
+ 
+  function processCycle_hour() {
+	 $table='sys_date_format';
+	 $all_vals=SQLSelect("SELECT * FROM $table");
+	 $total=count($all_vals);
+
 	 if ($total) {
 		for($i=0;$i<$total;$i++) {
 			if ($all_vals[$i]['FORMAT']=="d1") {
-				switch (date( "m", time())) {
-					case '01':$mn='Января';break;
-					case '02':$mn='Февраля';break;
-					case '03':$mn='Марта';break;
-					case '04':$mn='Апреля';break;
-					case '05':$mn='Мая';break;
-					case '06':$mn='Июня';break;
-					case '07':$mn='Июля';break;
-					case '08':$mn='Августа';break;
-					case '09':$mn='Сентября';break;
-					case '10':$mn='Октября';break;
-					case '11':$mn='Ноября';break;
-					case '12':$mn='Декабря';break;
+					switch (date( "m", time())) {
+						case '01':$mn='Января';break;
+						case '02':$mn='Февраля';break;
+						case '03':$mn='Марта';break;
+						case '04':$mn='Апреля';break;
+						case '05':$mn='Мая';break;
+						case '06':$mn='Июня';break;
+						case '07':$mn='Июля';break;
+						case '08':$mn='Августа';break;
+						case '09':$mn='Сентября';break;
+						case '10':$mn='Октября';break;
+						case '11':$mn='Ноября';break;
+						case '12':$mn='Декабря';break;
+					}
+					$result=date( "d", time())." ".$mn." ".date( "Y", time());
+				} elseif ($all_vals[$i]['FORMAT']=="n1") {
+					switch (date("N", time())) {
+						case 1:$result='Понедельник';break;
+						case 2:$result='Вторник';break;
+						case 3:$result='Среда';break;
+						case 4:$result='Четверг';break;
+						case 5:$result='Пятница';break;
+						case 6:$result='Суббота';break;
+						case 7:$result='Воскресенье';break;
+					}
+				} elseif ($all_vals[$i]['FORMAT']=="n2") {
+					switch (date("N", time())) {
+						case 1:$result='Пн';break;
+						case 2:$result='Вт';break;
+						case 3:$result='Ср';break;
+						case 4:$result='Чт';break;
+						case 5:$result='Пт';break;
+						case 6:$result='Сб';break;
+						case 7:$result='Вс';break;
+					}
+				} elseif ($all_vals[$i]['FORMAT']=="m1") {
+					switch (date( "m", time())) {
+						case '01':$mn='Января';break;
+						case '02':$mn='Февраля';break;
+						case '03':$mn='Марта';break;
+						case '04':$mn='Апреля';break;
+						case '05':$mn='Мая';break;
+						case '06':$mn='Июня';break;
+						case '07':$mn='Июля';break;
+						case '08':$mn='Августа';break;
+						case '09':$mn='Сентября';break;
+						case '10':$mn='Октября';break;
+						case '11':$mn='Ноября';break;
+						case '12':$mn='Декабря';break;
+					}
+					$result=$mn;
+				} else {
+					$result=date($all_vals[$i]['FORMAT'],time());
 				}
-				$result=date( "d", time())." ".$mn." ".date( "Y", time());
-			} elseif ($all_vals[$i]['FORMAT']=="n1") {
-				switch (date("N", time())) {
-					case 1:$result='Понедельник';break;
-					case 2:$result='Вторник';break;
-					case 3:$result='Среда';break;
-					case 4:$result='Четверг';break;
-					case 5:$result='Пятница';break;
-					case 6:$result='Суббота';break;
-					case 7:$result='Воскресенье';break;
-				}
-			} elseif ($all_vals[$i]['FORMAT']=="n2") {
-				switch (date("N", time())) {
-					case 1:$result='Пн';break;
-					case 2:$result='Вт';break;
-					case 3:$result='Ср';break;
-					case 4:$result='Чт';break;
-					case 5:$result='Пт';break;
-					case 6:$result='Сб';break;
-					case 7:$result='Вс';break;
-				}
-			} else {
-				$result=date($all_vals[$i]['FORMAT'],time());
-			}
-			sg($all_vals[$i]['LINKED_OBJECT'].'.'.$all_vals[$i]['LINKED_PROPERTY'], $result);
+				sg($all_vals[$i]['LINKED_OBJECT'].'.'.$all_vals[$i]['LINKED_PROPERTY'], $result);
 		}		 
 	 }
  }

@@ -22,16 +22,22 @@
 <!-- FORMAT (varchar) -->
 <div class="form-group">
  <label class="col-lg-3 control-label"[#if ERR_FORMAT#] style="color:red;font-weight:bold"[#endif#]>
- FORMAT:
+ <#LANG_FORMAT#>:
  </label>
  	<div class="col-lg-4">
 	<select class="form-control" name="format">
 		<option value="H"[#if format=="H"#] selected[#endif#]>Часы</option>
 		<option value="i"[#if format=="i"#] selected[#endif#]>Минуты</option>
-		<option value="H:i"[#if format=="H:i"#] selected[#endif#]>Часы:Минуты</option>
+		<option value="s"[#if format=="s"#] selected[#endif#]>Секунды</option>
+		<option value="H:i"[#if format=="H:i"#] selected[#endif#]>ЧЧ:ММ</option>
+		<option value="H:i"[#if format=="H:i:s"#] selected[#endif#]>ЧЧ:ММ:СС</option>
 		<option value="d"[#if format=="d"#] selected[#endif#]>Число</option>
+		<option value="W"[#if format=="W"#] selected[#endif#]>Неделя (порядковый номер в году)</option>
 		<option value="m"[#if format=="m"#] selected[#endif#]>Месяц (порядковый номер)</option>
 		<option value="N"[#if format=="N"#] selected[#endif#]>День недели (порядковый номер)</option>
+		<option value="Y"[#if format=="Y"#] selected[#endif#]>Год (4 цифры)</option>
+		<option value="y"[#if format=="y"#] selected[#endif#]>Год (2 цифры)</option>
+		<option value="m1"[#if format=="m1"#] selected[#endif#]>Месяц (родительный падеж)</option>
 		<option value="d1"[#if format=="d1"#] selected[#endif#]>Полная дата (ЧЧ Месяца ГГГГ)</option>
 		<option value="n1"[#if format=="n1"#] selected[#endif#]>День недели (полный)</option>
 		<option value="n2"[#if format=="n2"#] selected[#endif#]>День недели (короткий)</option>
