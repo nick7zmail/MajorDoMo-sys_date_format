@@ -177,7 +177,7 @@ function usual(&$out) {
  
  function processCycle_sec() {
 	 $table='sys_date_format';
-	 $all_vals=SQLSelect("SELECT * FROM $table");
+	 $all_vals=SQLSelect("SELECT * FROM $table WHERE FORMAT='s' OR FORMAT='H:i:s'");
 	 $total=count($all_vals);
 
 	 if ($total) {
@@ -191,7 +191,7 @@ function usual(&$out) {
  }
  function processCycle_min() {
 	 $table='sys_date_format';
-	 $all_vals=SQLSelect("SELECT * FROM $table");
+	 $all_vals=SQLSelect("SELECT * FROM $table WHERE FORMAT='H' OR FORMAT='i' OR FORMAT='H:i'");
 	 $total=count($all_vals);
 
 	 if ($total) {
